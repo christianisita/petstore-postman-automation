@@ -1,0 +1,561 @@
+{
+	"info": {
+		"_postman_id": "5b2f476f-5750-401c-85ac-436dfaee5b4e",
+		"name": "petstore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33582836"
+	},
+	"item": [
+		{
+			"name": "create user positive",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = pm.response.json();",
+							"let status = pm.response.status;",
+							"",
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Code in response should be 200\", function(){",
+							"    pm.expect(responseData.code).to.eql(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 98752628,\n  \"username\": \"sitadummydummy\",\n  \"firstName\": \"sita\",\n  \"lastName\": \"dummy\",\n  \"email\": \"sita@dummy.com\",\n  \"password\": \"dummy123\",\n  \"phone\": \"123456\",\n  \"userStatus\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/user",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user positive",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Username should be sitadummydummy\", function(){",
+							"    pm.expect(responseData.username).to.eql(\"sitadummydummy\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/user/sitadummydummy",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"user",
+						"sitadummydummy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 404\", function(){",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response code should be 1\", function(){",
+							"    pm.expect(responseData.code).to.eql(1);",
+							"});",
+							"",
+							"pm.test(\"Response type should be error\", function(){",
+							"    pm.expect(responseData.type).to.eql(\"error\");",
+							"});",
+							"",
+							"pm.test(\"Response message should be user not found\", function(){",
+							"    pm.expect(responseData.message).to.eql(\"User not found\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/user/sitadummy",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"user",
+						"sitadummy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user positive",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = pm.response.json();",
+							"let status = pm.response.status;",
+							"",
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Code in response should be 200\", function(){",
+							"    pm.expect(responseData.code).to.eql(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 98752628,\n  \"username\": \"sitadummydummy\",\n  \"firstName\": \"sita edit\",\n  \"lastName\": \"dummy\",\n  \"email\": \"sita@dummy.com\",\n  \"password\": \"dummy123\",\n  \"phone\": \"123456\",\n  \"userStatus\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/user/sitadummydummy",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"user",
+						"sitadummydummy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login positive",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = pm.response.json();",
+							"let status = pm.response.status;",
+							"",
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Code in response should be 200\", function(){",
+							"    pm.expect(responseData.code).to.eql(200);",
+							"});",
+							"",
+							"pm.test(\"Message contains session id\", function(){",
+							"    pm.expect(responseData.message).to.include(\"logged in user session:\")",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/user/login?username=sitadummydummy&password=dummy123",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"user",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "sitadummydummy"
+						},
+						{
+							"key": "password",
+							"value": "dummy123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create pet positive",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = pm.response.json();",
+							"let requestBody = pm.request.toJSON().body.raw",
+							"",
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Name should be \\\"frisbi dummy\\\"\", function(){",
+							"    pm.expect(responseData.name).to.eql(\"frisbi dummy\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 90909090,\n  \"category\": {\n    \"id\": 121212,\n    \"name\": \"dog-dummy\"\n  },\n  \"name\": \"frisbi dummy\",\n  \"photoUrls\": [\n    \"imgur.com\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 212121,\n      \"name\": \"dalmatian\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update pet negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 404\", function(){",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Response code should be 400\", function(){",
+							"    pm.expect(responseData.code).to.eql(400);",
+							"});",
+							"",
+							"pm.test(\"Response message should be user not found\", function(){",
+							"    pm.expect(responseData.message).to.eql(\"bad input\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": meong,\n  \"category\": {\n    \"id\": 0,\n    \"name\": \"string\"\n  },\n  \"name\": \"doggie\",\n  \"photoUrls\": [\n    \"string\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 0,\n      \"name\": \"string\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get pet negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 404\", function(){",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Message should be Pet not found\", function(){",
+							"    pm.expect(responseData.message).to.eql(\"Pet not found\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet/0",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get order negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 404\", function(){",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Message should be order not found\", function(){",
+							"    pm.expect(responseData.message).to.eql(\"Order not found\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/store/order/0",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete order negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 404\", function(){",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Message should be Pet not found\", function(){",
+							"    pm.expect(responseData.message).to.eql(\"Order Not Found\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/store/order/0",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
